@@ -27,26 +27,39 @@
                     Secure, fast, and reliable document analysis at your fingertips.
                 </p>
                 
-                <!-- Search Section -->
-                <div class="search-section" id="searchSection" style="display: none;">
-                    <div class="search-container">
-                        <input type="text" id="searchInput" class="search-input" placeholder="Search through extracted text..." maxlength="100">
-                        <button id="searchBtn" class="search-button">
-                            <span class="search-icon">🔍</span>
-                            <span class="search-text">Search</span>
-                        </button>
+                <!-- Combined Action Section -->
+                <div class="action-container">
+                    <!-- Search Section -->
+                    <div class="search-section" id="searchSection">
+                        <h3 class="section-title">🔍 Search Previously Uploaded Content</h3>
+                        <div class="search-container">
+                            <input type="text" id="searchInput" class="search-input" placeholder="Search through extracted text..." maxlength="100">
+                            <button id="searchBtn" class="search-button">
+                                <span class="search-icon">🔍</span>
+                                <span class="search-text">Search</span>
+                            </button>
+                        </div>
+                        <div id="searchResults" class="search-results"></div>
                     </div>
-                    <div id="searchResults" class="search-results"></div>
-                </div>
-                
-                <button id="uploadBtn" class="upload-button">
-                    <span class="btn-icon">📤</span>
-                    <span class="btn-text">Upload Document</span>
-                </button>
-                
-                <div class="supported-formats">
-                    <p>Supported formats: <span class="format-badge">PDF</span> <span class="format-badge">TXT</span></p>
-                    <p class="file-limit">Maximum file size: 16MB</p>
+                    
+                    <!-- Divider -->
+                    <div class="section-divider">
+                        <span class="divider-text">OR</span>
+                    </div>
+                    
+                    <!-- Upload Section -->
+                    <div class="upload-section">
+                        <h3 class="section-title">📤 Upload New Document</h3>
+                        <button id="uploadBtn" class="upload-button">
+                            <span class="btn-icon">📤</span>
+                            <span class="btn-text">Upload Document</span>
+                        </button>
+                        
+                        <div class="supported-formats">
+                            <p>Supported formats: <span class="format-badge">PDF</span> <span class="format-badge">TXT</span></p>
+                            <p class="file-limit">Maximum file size: 16MB</p>
+                        </div>
+                    </div>
                 </div>
             </div>
 

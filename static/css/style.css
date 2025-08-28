@@ -144,15 +144,88 @@ body {
     line-height: 1.7;
 }
 
+/* Action Container */
+.action-container {
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: var(--spacing-8);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--spacing-6);
+    align-items: start;
+}
+
+.section-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--gray-700);
+    margin-bottom: var(--spacing-4);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+}
+
+/* Section Divider */
+.section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 200px;
+    position: relative;
+}
+
+.section-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent, var(--gray-300), transparent);
+}
+
+.divider-text {
+    background: var(--white);
+    color: var(--gray-500);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-2) var(--spacing-3);
+    border: 2px solid var(--gray-300);
+    border-radius: var(--radius-xl);
+    position: relative;
+    z-index: 1;
+}
+
+/* Upload Section */
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 /* Search Section */
 .search-section {
-    width: 100%;
-    max-width: 600px;
-    margin-bottom: var(--spacing-8);
     background: var(--white);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-lg);
     padding: var(--spacing-6);
+    border: 1px solid var(--gray-200);
+}
+
+.search-input:disabled {
+    background: var(--gray-100);
+    color: var(--gray-400);
+    cursor: not-allowed;
+    border-color: var(--gray-200);
+}
+
+.search-input:disabled::placeholder {
+    color: var(--gray-300);
 }
 
 .search-container {
@@ -581,6 +654,24 @@ body {
         font-size: var(--font-size-3xl);
     }
     
+    .action-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-4);
+        max-width: 100%;
+    }
+    
+    .section-divider {
+        min-height: auto;
+        height: 60px;
+    }
+    
+    .section-divider::before {
+        width: 100px;
+        height: 2px;
+        top: 50%;
+        left: 50%;
+    }
+    
     .upload-button {
         width: 100%;
         justify-content: center;
@@ -588,7 +679,7 @@ body {
     }
     
     .search-section {
-        margin: 0 var(--spacing-2) var(--spacing-8);
+        margin: 0;
         padding: var(--spacing-4);
     }
     

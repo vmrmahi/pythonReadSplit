@@ -188,6 +188,11 @@ class DocumentProcessor {
                 this.showMessage('File processed successfully! Text has been extracted and stored.', 'success');
                 this.updateStats(result.stats);
                 
+                // Enable search functionality after successful upload
+                this.searchInput.disabled = false;
+                this.searchBtn.disabled = false;
+                this.searchInput.placeholder = "Search through extracted text...";
+                
                 // Auto-close modal after success
                 setTimeout(() => {
                     this.closeModalHandler();
@@ -243,11 +248,17 @@ class DocumentProcessor {
             if (stats.processed_files_count > 0) {
                 this.updateStatsDisplay(stats);
                 this.statsSection.style.display = 'block';
-                
-                // Show search section if text is available
-                if (stats.text_available) {
-                    this.searchSection.style.display = 'block';
-                }
+            }
+            
+            // Update search section state based on available text
+            if (stats.text_available) {
+                this.searchInput.disabled = false;
+                this.searchBtn.disabled = false;
+                this.searchInput.placeholder = "Search through extracted text...";
+            } else {
+                this.searchInput.disabled = true;
+                this.searchBtn.disabled = true;
+                this.searchInput.placeholder = "Upload a document first to enable search...";
             }
         } catch (error) {
             console.error('Error loading stats:', error);
@@ -265,10 +276,8 @@ class DocumentProcessor {
             this.updateStatsDisplay(currentStats);
             this.statsSection.style.display = 'block';
             
-            // Show search section when text is available
-            this.searchSection.style.display = 'block';
-            
-            // Animate the sections into view
+            // Search section is always visible now, no need to show/hide
+            // Just scroll to stats section for user feedback
             this.statsSection.scrollIntoView({ 
                 behavior: 'smooth', 
                 block: 'nearest' 
@@ -286,6 +295,12 @@ class DocumentProcessor {
 
         if (query.length < 2) {
             this.displaySearchError('Search term must be at least 2 characters');
+            return;
+        }
+
+        // Check if search input is disabled (no text available)
+        if (this.searchInput.disabled) {
+            this.displaySearchError('Please upload a document first to enable search functionality');
             return;
         }
 
