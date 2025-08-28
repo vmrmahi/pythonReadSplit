@@ -191,7 +191,7 @@ def search_text():
         if not query:
             return jsonify({
                 'success': False,
-                'message': 'Search query is required'
+                'message': 'Search query is required yes'
             }), 400
         
         if not global_extracted_text:
